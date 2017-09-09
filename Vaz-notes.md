@@ -3,6 +3,8 @@
 Run `npm run dist` to generate/update `dist/bundle.js`.
 
 Commit changes and then push to heroku.
+git push heroku master
+heroku open
 
 Notes:
 
