@@ -1,7 +1,4 @@
 // server.js
-
-var HOST = location.origin.replace(/^http/, 'ws')// for deploying on heroku
-
 var blue = require('../blutooth.js')
 const express = require('express');
 const wsLib = require('ws');
