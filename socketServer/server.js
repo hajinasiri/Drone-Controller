@@ -1,5 +1,6 @@
 // server.js
-// var blue = require('../blutooth.js')
+'use strict';
+
 const express = require('express');
 const wsLib = require('ws');
 const SocketServer = wsLib.Server;
