@@ -48,8 +48,8 @@ class App extends Component {
   componentDidMount() {
 
     var HOST = location.origin.replace(/^http/, 'ws')// for deploying on heroku
-    // this.ws = new WebSocket(HOST);
-    this.ws = new WebSocket('ws://localhost:3001');
+    this.ws = new WebSocket(HOST);
+    // this.ws = new WebSocket('ws://localhost:3001');
     this.ws.addEventListener('open', () => {
 
     });
