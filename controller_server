@@ -1,0 +1,21 @@
+var blue = require('./src/bluetooth')
+var WebSocket = require('ws')
+ws = new WebSocket('ws://' + 'localhost' + ':3001');
+
+  ws.addEventListener('open', () => {
+    //Telling the socket server that this is the controller
+    ws.send(JSON.stringify({type:"controller"}));
+    });
+    ws.addEventListener('message', (event) => {
+      console.log(event.data)
+      var temp = event.data;
+      var data=JSON.parse(event.data);
+
+      if(data.type === "postNotification"){
+        blue.drive();
+      }
+    });
+
+    setTimeout(() => {
+    console.log("Simulating incoming message");
+    });

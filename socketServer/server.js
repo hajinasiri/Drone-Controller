@@ -30,10 +30,6 @@ const wss = new SocketServer({server});
 
   var line = [];
 
-// Set up a callback that will run when a client connects to the server
-// When a client connects they are assigned a socket, represented by
-// the ws parameter in the callback.
-
 wss.on('connection', (ws) => {
   line.push(ws);
   wss.broadcast(JSON.stringify({type:"count", count:wss.clients.size}));
@@ -41,9 +37,11 @@ wss.on('connection', (ws) => {
 
     wss.broadcast(str);
     // Checking if it's a command
-    var command = JSON.parse(str).content;
-    if(command === "run the drone"){
-      ws.send(JSON.stringify({type: "count", count: 1000}))
+    var controlerType = JSON.parse(str).type;
+    // putting the controller client in a variable controller
+    if(controlerType === "controller"){
+      var controller = ws;
+      controller.send(JSON.stringify({content: "I am the controller"}));
 
     }
 

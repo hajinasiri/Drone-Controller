@@ -37,18 +37,14 @@ class App extends Component {
 
   componentDidMount() {
 
-    var HOST = location.origin.replace(/^http/, 'ws')// for deploying on heroku
-    console.log("HOST is ______");
-    console.log('ws://' + location.hostname + ':3001');
-    // // this.ws = new WebSocket(HOST);
     this.ws = new WebSocket('ws://' + location.hostname + ':3001');
     this.ws.addEventListener('open', () => {
 
     });
     this.ws.addEventListener('message', (event) => {
       var temp = event.data;
-       var data=JSON.parse(event.data);
-       var mymass = {};
+      var data=JSON.parse(event.data);
+      var mymass = {};
       if(data.type === "name"){
         var news = [{username:"" , content:(data.oldname + " changed their name to "+ data.newname), id:uuid(), count:0}];
         mymass = this.state.messages.concat(news);
