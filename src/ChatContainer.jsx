@@ -14,8 +14,7 @@ class ChatContainer extends Component {
   render() {
     return (
       <div>
-        <div className="request-control">Request Control</div>
-        <div className="queue-container">Queue goes here</div>
+
         <div className="chat-container">
           <NavBar count={this.props.count}/>
           <MessageList Messages={this.props.Messages}/>

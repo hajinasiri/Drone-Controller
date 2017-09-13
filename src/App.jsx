@@ -3,6 +3,7 @@ import ChatContainer from './ChatContainer.jsx';
 import Header from './Header.jsx';
 import Video from './Video.jsx';
 import Controls from './Controls.jsx';
+import QueueContainer from './QueueContainer.jsx';
 const uuid = require('uuid/v1');
 
 class App extends Component {
@@ -88,6 +89,7 @@ class App extends Component {
           <Controls sendIt={this.sendIt}/>
         </div>
         <div className="sidebar">
+          <QueueContainer />
           <ChatContainer count={this.state.count} Messages={this.state.messages} currentUser={this.state.currentUser} updatename={this.updatename} updateme={this.updateme}/>
         </div>
       </div>
