@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import SideBar from './SideBar.jsx';
+import ChatContainer from './ChatContainer.jsx';
 import Header from './Header.jsx';
 import Video from './Video.jsx';
 import Controls from './Controls.jsx';
@@ -88,7 +88,7 @@ class App extends Component {
           <Controls sendIt={this.sendIt}/>
         </div>
         <div className="sidebar">
-          <SideBar count={this.state.count} Messages={this.state.messages} currentUser={this.state.currentUser} updatename={this.updatename} updateme={this.updateme}/>
+          <ChatContainer count={this.state.count} Messages={this.state.messages} currentUser={this.state.currentUser} updatename={this.updatename} updateme={this.updateme}/>
         </div>
       </div>
     );

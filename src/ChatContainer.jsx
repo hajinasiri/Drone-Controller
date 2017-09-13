@@ -3,7 +3,7 @@ import NavBar from './NavBar.jsx';
 import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
 
-class SideBar extends Component {
+class ChatContainer extends Component {
   constructor(props) {
     super(props);
      this.state = {
@@ -25,4 +25,4 @@ class SideBar extends Component {
     );
   }
 }
-export default SideBar;
+export default ChatContainer;
