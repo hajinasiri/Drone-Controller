@@ -5,7 +5,7 @@ class Video extends Component {
     return (
     <div>
       <div className="controls">
-        <h2 className="control-panel-line"><span> Control Panel </span></h2>
+        <div className="controls-heading"> Control Panel </div>
 
         <div className="control-panel-container">
 
