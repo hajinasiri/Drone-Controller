@@ -4,7 +4,6 @@ import Header from './Header.jsx';
 import Video from './Video.jsx';
 import Controls from './Controls.jsx';
 
-
 class App extends Component {
   render() {
     return (
