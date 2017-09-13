@@ -9,19 +9,23 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      currentUser: {name: "New Guest"}, // optional. if currentUser is not defined, it means the user is Anonymous
+      currentUser: {name: "New Guest"},
       messages: [],
       count:0
     };
     this.updateme = this.updateme.bind(this);
     this.updatename = this.updatename.bind(this);
+    this.sendIt = this.sendIt.bind(this);
   }
+  // this function just sends the JSON.stringified of the input. It's being passed to the controls component
+  sendIt(obj) {
+    this.ws.send(JSON.stringify(obj));
+  }
+
 
   updateme (text,id,username) {
     var new_obj = [{username: username, content:text, id:uuid(), type: "postNotification", count:0}];
     this.ws.send(JSON.stringify(new_obj[0]));
-       // Update the state of the app component.
-      // Calling setState will trigger a call to render() in App and all child components.
   }
 
   updatename (newname, oldname) {
@@ -81,7 +85,7 @@ class App extends Component {
         <div className="main">
           <Header />
           <Video />
-          <Controls />
+          <Controls sendIt={this.sendIt}/>
         </div>
         <div className="sidebar">
           <SideBar count={this.state.count} Messages={this.state.messages} currentUser={this.state.currentUser} updatename={this.updatename} updateme={this.updateme}/>
@@ -91,3 +95,6 @@ class App extends Component {
   }
 }
 export default App;
+
+
+
