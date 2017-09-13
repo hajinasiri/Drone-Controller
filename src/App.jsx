@@ -60,7 +60,6 @@ class App extends Component {
     });
     this.ws.onerror = e => this.setState({ error: 'WebSocket error' })
     this.ws.onclose = e => !e.wasClean && this.setState({ error: `WebSocket error: ${e.code} ${e.reason}` })
-
     console.log("componentDidMount <App />");
     setTimeout(() => {
     console.log("Simulating incoming message");
