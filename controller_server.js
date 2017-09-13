@@ -32,7 +32,7 @@ rollingSpider.connect(function (error) {
     ws.addEventListener('message', (event) => {
       console.log(event.data)
       var data=JSON.parse(event.data);
-      if(data.type === "postNotification"){
+      if(data.type === "command"){
         if(data.content === "takeoff"){
           rollingSpider.takeoff()
         }else if(data.content === "land"){
