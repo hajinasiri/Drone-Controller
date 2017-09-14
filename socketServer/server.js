@@ -26,7 +26,7 @@ const wss = new SocketServer({server});
        }
     });
   };
-
+  var controller = {};
   var line = [];
 
 wss.on('connection', (ws) => {
@@ -35,15 +35,17 @@ wss.on('connection', (ws) => {
   wss.broadcast(JSON.stringify({type:"count", count:wss.clients.size-1}));
   ws.on('message',(str)=>{
     console.log(JSON.parse(str));
-    wss.broadcast(str);
-
     var messType = JSON.parse(str).type;
-    // putting the controller client in the controller variable
-    if (messType === "postNotification")
+
     if(messType === "controller"){
-      var controller = ws;
+      controller = ws;
       controller.send(JSON.stringify({content: "I am recognized as the controller"}));
-      // Checking if it's a command
+    }
+
+
+    // putting the controller client in the controller variable
+    if (messType === "postNotification" || messType === "name"){
+      wss.broadcast(str);
     }else if(messType === "command"){
       controller.send(str)
 
