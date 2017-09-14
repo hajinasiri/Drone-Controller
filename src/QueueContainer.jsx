@@ -3,16 +3,25 @@ import React, {Component} from 'react';
 class QueueContainer extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
+      mytext: "Request Control",
       uname: this.props.currentUser.name,
       time: {},
       seconds: 60 };
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
     this.countDown = this.countDown.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
- secondsToTime(secs){
+  handleClick() {
+    this.setState(prevState => ({
+      mytext: !prevState.mytext
+    }));
+  }
+
+  secondsToTime(secs){
     let seconds = secs;
     let obj = {
       "s": seconds
@@ -22,8 +31,9 @@ class QueueContainer extends Component {
 
   componentDidMount() {
     let timeLeftVar = this.secondsToTime(this.state.seconds);
-    this.setState({ time: timeLeftVar });
+    this.setState({ time: timeLeftVar});
   }
+
   startTimer() {
     if (this.timer == 0) {
       this.timer = setInterval(this.countDown, 1000);
@@ -41,11 +51,14 @@ class QueueContainer extends Component {
     }
   }
 
+// const Child = ({onClick, text}) => (<button onClick={onClick}>{text}</button>)
+
   render() {
     return (
     <div>
       <div className="request-control">
-      <button className="request">Request Control</button></div>
+      <button className="request" onClick={this.handleClick}>{this.state.mytext ? 'Request Control' : 'Cancel Request'}</button>
+      </div>
       <div className="queue-container">
         <div className="queue-heading">
           Current Queue
@@ -58,12 +71,13 @@ class QueueContainer extends Component {
               <span> {this.state.time.s} seconds remaining</span>
             </div>
           </div>
+
           <div className="users-item">
             <span className="users-name">{this.state.uname}</span>
           </div>
 
           <div className="users-item">
-            <span className="users-name">...3 MORE USERS IN QUEUE</span>
+            <span className="users-name">...0 USERS IN QUEUE</span>
           </div>
         </div>
       </div>
