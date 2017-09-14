@@ -23,12 +23,12 @@ class QueueContainer extends Component {
     let timeLeftVar = this.secondsToTime(this.state.seconds);
     this.setState({ time: timeLeftVar });
   }
-
   startTimer() {
     if (this.timer == 0) {
       this.timer = setInterval(this.countDown, 1000);
     }
   }
+
 
   countDown() {
     let seconds = this.state.seconds - 1;
