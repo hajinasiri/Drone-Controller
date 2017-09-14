@@ -18,7 +18,6 @@ class ChatBar extends Component {
       var old=this.state.oldname;
       this.props.updatename(myname,old);
       this.setState({oldname: this.state.uname})
-
     }
   }
 
@@ -52,6 +51,3 @@ class ChatBar extends Component {
 }
 
 export default ChatBar;
-
-
-
