@@ -4,8 +4,8 @@
 var RollingSpider = require('rolling-spider');
 var temporal = require('temporal');
 var rollingSpider = new RollingSpider({
-  // uuid: 'RS_W056147'
-  uuid: 'RS_B138046'
+  uuid: 'RS_W056147'
+  // uuid: 'RS_B138046'
 });
 var i = 1;
 while(i === 1){
@@ -38,11 +38,7 @@ while(i === 1){
           if(data.content === "takeoff"){
             rollingSpider.takeoff();
           }else if(data.content === "land"){
-            delay: 5000,
-            task: function () {
-              rollingSpider.land();
-            }
-            i = 1;
+            rollingSpider.land();
           }else if(data.content === "up"){
             rollingSpider.up();
           }else if(data.content === "down"){

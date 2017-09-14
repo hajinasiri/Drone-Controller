@@ -53,6 +53,8 @@
     "express": "^4.15.4",
     "react": "^15.4.2",
     "react-dom": "15.4.2",
+    "rolling-spider": "^1.7.0",
+    "temporal": "^0.6.0",
     "utf-8-validate": "3.0.3",
     "ws": "3.1.0",
     "youtube-live-react": "^1.0.0"
