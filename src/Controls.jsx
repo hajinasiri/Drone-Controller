@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class Video extends Component {
+class Controls extends Component {
   constructor(props) {
     super(props);
     this.sendcommand=this.sendcommand.bind(this)
@@ -58,4 +58,4 @@ class Video extends Component {
     )
   }
 }
-export default Video;
+export default Controls;
