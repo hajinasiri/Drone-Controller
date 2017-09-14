@@ -13,7 +13,8 @@ class App extends Component {
       currentUser: {name: "New Guest"},
       messages: [],
       users: [],
-      count:0
+      count:0,
+      lineInfo:[]//[your position in line, other people in line's name]
     };
     this.updateme = this.updateme.bind(this);
     this.updatename = this.updatename.bind(this);
@@ -35,7 +36,7 @@ class App extends Component {
       this.ws.send(JSON.stringify(obj));
       this.setState({
         currentUser: {
-          name: name
+          name: newname
         }
       });
     }
@@ -81,7 +82,7 @@ class App extends Component {
           <Controls sendIt={this.sendIt}/>
         </div>
         <div className="sidebar">
-          <QueueContainer currentUser={this.state.currentUser} />
+          <QueueContainer currentUser={this.state.currentUser} lineInfo={this.state.lineInfo} sendIt={this.sendIt} />
 
           <ChatContainer count={this.state.count} Messages={this.state.messages} currentUser={this.state.currentUser} updatename={this.updatename} updateme={this.updateme}/>
         </div>

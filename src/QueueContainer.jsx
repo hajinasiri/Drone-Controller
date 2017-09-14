@@ -5,6 +5,7 @@ class QueueContainer extends Component {
     super(props);
 
     this.state = {
+      reqstate: -1,
       mytext: "Request Control",
       uname: this.props.currentUser.name,
       time: {},
@@ -16,9 +17,21 @@ class QueueContainer extends Component {
   }
 
   handleClick() {
-    this.setState(prevState => ({
-      mytext: !prevState.mytext
-    }));
+    if(this.state.reqstate === 1){
+      if(confirm('Cancel the request?')) {
+        this.setState(prevState => ({
+          mytext: !prevState.mytext,
+          reqstate: -1
+        }));
+        this.props.sendIt({type:"request",name:this.props.currentUser.name, reqstate: this.state.reqstate});
+      }
+    }else{
+      this.setState(prevState => ({
+        mytext: !prevState.mytext,
+        reqstate: 1
+      }));
+      this.props.sendIt({type:"request",name:this.props.currentUser.name, reqstate: this.state.reqstate});
+    }
   }
 
   secondsToTime(secs){
