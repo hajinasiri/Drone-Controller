@@ -6,7 +6,6 @@ class Video extends Component {
     this.sendcommand=this.sendcommand.bind(this)
   }
   sendcommand(command){
-    console.log("it's being called")
     this.props.sendIt({type:"command", content:command})
 
   }
@@ -20,16 +19,16 @@ class Video extends Component {
         <div className="control-panel-container">
 
           <div className="button-container rotated-buttons">
-            <button className="button" onMouseDown={() => this.sendcommand("forward")} onMouseUp={() => this.sendcommand("takeoff")}>
+            <button className="button" onMouseDown={() => this.sendcommand("forward")} onMouseUp={() => this.sendcommand("up({ steps: 1 })")}>
               <span className="label">Move Forward</span>
             </button>
-            <button className="button" onMouseDown={() => this.sendcommand("right")} onMouseUp={() => this.sendcommand("takeoff")}>
+            <button className="button" onMouseDown={() => this.sendcommand("right")} onMouseUp={() => this.sendcommand("up({ steps: 1 })")}>
               <span className="label">Move Right</span>
             </button>
-            <button className="button" onMouseDown={() => this.sendcommand("left")} onMouseUp={() => this.sendcommand("takeoff")}>
+            <button className="button" onMouseDown={() => this.sendcommand("left")} onMouseUp={() => this.sendcommand("up({ steps: 1 })")}>
               <span className="label">Move Left</span>
             </button>
-            <button className="button" onMouseDown={() => this.sendcommand("backward")} onMouseUp={() => this.sendcommand("takeoff")}>
+            <button className="button" onMouseDown={() => this.sendcommand("backward")} onMouseUp={() => this.sendcommand("up({ steps: 1 })")}>
               <span className="label">Move Backward</span>
             </button>
           </div>
@@ -40,16 +39,16 @@ class Video extends Component {
           </div>
 
           <div className="button-container rotated-buttons">
-            <button className="button" onMouseDown={() => this.sendcommand("up")} onMouseUp={() => this.sendcommand("takeoff")}>
+            <button className="button" onMouseDown={() => this.sendcommand("up")} onMouseUp={() => this.sendcommand("up({ steps: 1 })")}>
               <span className="label">Rise</span>
             </button>
-            <button className="button" onMouseDown={() => this.sendcommand("clockwise")} onMouseUp={() => this.sendcommand("takeoff")}>
+            <button className="button" onMouseDown={() => this.sendcommand("clockwise")} onMouseUp={() => this.sendcommand("up({ steps: 1 })")}>
               <span className="label">Turn Right</span>
             </button>
-            <button className="button" onMouseDown={() => this.sendcommand("counterclockwise")} onMouseUp={() => this.sendcommand("takeoff")}>
+            <button className="button" onMouseDown={() => this.sendcommand("counterclockwise")} onMouseUp={() => this.sendcommand("up({ steps: 1 })")}>
               <span className="label">Turn Left</span>
             </button>
-            <button className="button" onMouseDown={() => this.sendcommand("down")} onMouseUp={() => this.sendcommand("takeoff")}>
+            <button className="button" onMouseDown={() => this.sendcommand("down")} onMouseUp={() => this.sendcommand("up({ steps: 1 })")}>
               <span className="label">Lower</span>
             </button>
           </div>
