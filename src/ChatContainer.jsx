@@ -3,6 +3,7 @@ import NavBar from './NavBar.jsx';
 import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
 
+
 class ChatContainer extends Component {
   constructor(props) {
     super(props);

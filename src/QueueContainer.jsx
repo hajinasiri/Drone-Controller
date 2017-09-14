@@ -34,7 +34,6 @@ class QueueContainer extends Component {
       time: this.secondsToTime(seconds),
       seconds: seconds
     });
-
     if (seconds == 0) {
       clearInterval(this.timer);
     }
