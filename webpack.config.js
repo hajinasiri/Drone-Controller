@@ -1,5 +1,6 @@
 var path = require('path');
 var webpack = require('webpack');
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   devtool: 'eval',
@@ -12,6 +13,12 @@ module.exports = {
     filename: 'bundle.js',
     publicPath: '/dist/'
   },
+  plugins:[
+    new Dotenv({
+      path: './.env',
+      safe:false
+    })
+  ],
   module: {
     rules: [
       {
@@ -28,5 +35,6 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+
 };
