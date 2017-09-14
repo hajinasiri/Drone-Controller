@@ -1,11 +1,12 @@
 // This is the top-level scss file. Import all other files in here.
 @import 'home';
 @import 'video';
-@import 'sidebar';
+@import 'chat-container';
 @import 'messages';
 @import 'header';
 @import 'controls';
 @import 'chatbar';
+@import 'queue-container';
 
 @import url('https://fonts.googleapis.com/css?family=Muli:400,600,700');
 @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/4.2.0/normalize.min.css");

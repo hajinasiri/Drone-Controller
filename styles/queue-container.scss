@@ -1,0 +1,26 @@
+.request-control {
+  background-color: #3D3C49;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  padding: 20px;
+}
+
+.queue-container {
+  padding: 10px;
+}
+
+.queue-list {
+  background: deepskyblue;
+  padding: 10px;
+}
+
+.users-item {
+  background: rgba(255,255,255,0.2);
+  border-left: 10px solid rgba(0,0,0,0.2);
+  padding: 10px;
+}
+.users-item:hover,
+.users-item.active {
+  background: rgba(255,255,255,0.4);
+}
