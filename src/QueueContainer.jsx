@@ -44,7 +44,8 @@ class QueueContainer extends Component {
   render() {
     return (
     <div>
-      <div className="request-control">Request Control</div>
+      <div className="request-control">
+      <button className="request">Request Control</button></div>
       <div className="queue-container">
         <div className="queue-heading">
           Current Queue
