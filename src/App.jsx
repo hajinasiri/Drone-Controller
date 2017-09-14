@@ -12,6 +12,7 @@ class App extends Component {
     this.state = {
       currentUser: {name: "New Guest"},
       messages: [],
+      users: [],
       count:0
     };
     this.updateme = this.updateme.bind(this);
@@ -22,7 +23,6 @@ class App extends Component {
   sendIt(obj) {
     this.ws.send(JSON.stringify(obj));
   }
-
 
   updateme (text,id,username) {
     var new_obj = [{username: username, content:text, id:uuid(), type: "postNotification", count:0}];
@@ -89,7 +89,8 @@ class App extends Component {
           <Controls sendIt={this.sendIt}/>
         </div>
         <div className="sidebar">
-          <QueueContainer />
+          <QueueContainer currentUser={this.state.currentUser} />
+
           <ChatContainer count={this.state.count} Messages={this.state.messages} currentUser={this.state.currentUser} updatename={this.updatename} updateme={this.updateme}/>
         </div>
       </div>
@@ -97,6 +98,3 @@ class App extends Component {
   }
 }
 export default App;
-
-
-

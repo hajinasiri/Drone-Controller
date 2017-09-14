@@ -3,18 +3,17 @@ import NavBar from './NavBar.jsx';
 import MessageList from './MessageList.jsx';
 import ChatBar from './ChatBar.jsx';
 
+
 class ChatContainer extends Component {
   constructor(props) {
     super(props);
      this.state = {
     }
-
   }
 
   render() {
     return (
       <div>
-
         <div className="chat-container">
           <NavBar count={this.props.count}/>
           <MessageList Messages={this.props.Messages}/>
