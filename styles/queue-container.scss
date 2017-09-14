@@ -13,6 +13,7 @@
 .queue-list {
   background: deepskyblue;
   padding: 10px;
+  overflow: scroll;
 }
 
 .users-item {
@@ -29,3 +30,12 @@
 .users-name{
   padding-right: 50px;
 }
+
+.request{
+  background: black;
+  color: white;
+  padding: 10px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
