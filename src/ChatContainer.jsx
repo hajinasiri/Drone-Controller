@@ -8,13 +8,11 @@ class ChatContainer extends Component {
     super(props);
      this.state = {
     }
-
   }
 
   render() {
     return (
       <div>
-
         <div className="chat-container">
           <NavBar count={this.props.count}/>
           <MessageList Messages={this.props.Messages}/>

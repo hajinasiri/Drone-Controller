@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-
-
 class ChatBar extends Component {
 
   constructor(props) {
@@ -30,13 +28,10 @@ class ChatBar extends Component {
 
   changeName = (event) => {
     this.setState({uname: event.target.value})
-
   }
 
   handleClick = (event) => {
     if (event.charCode === 13) {
-
-
       var mymess = event.target.value;
       this.props.updateme(mymess,1,this.state.uname);
       this.setState({text:""})
@@ -47,7 +42,6 @@ class ChatBar extends Component {
 
     return (
         <div>
-
           <footer className="chatbar">
             <input className="chatbar-username" placeholder="Your Name (Optional)" value={this.state.uname} onChange={this.changeName} onKeyPress={this.handlecheck} />
             <input className="chatbar-message" placeholder="Type a message and hit ENTER" value = {this.state.text} onChange ={this.changemess} onKeyPress={this.handleClick}/>

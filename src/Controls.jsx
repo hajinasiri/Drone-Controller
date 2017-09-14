@@ -8,7 +8,6 @@ class Video extends Component {
   sendcommand(command){
     console.log("it's being called")
     this.props.sendIt({type:"command", content:command})
-
   }
 
   render() {

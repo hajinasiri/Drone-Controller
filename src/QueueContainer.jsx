@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 
-
 class QueueContainer extends Component {
   constructor() {
     super();
@@ -29,7 +28,6 @@ class QueueContainer extends Component {
     }
   }
 
-
   countDown() {
     let seconds = this.state.seconds - 1;
     this.setState({
@@ -54,7 +52,7 @@ class QueueContainer extends Component {
           <div className="users-item active">
             <div className="queue-current">
               <span className="users-name">ESHA</span>
-              <button onClick={this.startTimer}>Start</button>
+              <button className="button-click" onClick={this.startTimer}>Start</button>
               <span> {this.state.time.s} seconds remaining</span>
             </div>
           </div>
