@@ -62,7 +62,6 @@ class App extends Component {
         this.setState({count:data.count})
       }else if(data.type === "lineInfo"){
         this.setState({lineInfo: data.lineInfo});
-        console.log(this.state.lineInfo);
       }
     });
     this.ws.onerror = e => this.setState({ error: 'WebSocket error' })

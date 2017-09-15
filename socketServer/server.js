@@ -32,9 +32,10 @@ function sendLineInfo(line){
         lineInfo.splice(-1,1);//removing the initial position value
         lineInfo.push(clientIndex);//adding the actual position of the user to the array
       }
-      client.send(JSON.stringify({type:"lineInfo", lineInfo:lineInfo}));
-      console.log(lineInfo);
-
+      if(lineInfo.length > 1){
+        client.send(JSON.stringify({type:"lineInfo", lineInfo:lineInfo}));
+        console.log(lineInfo);
+      }
     }
   });
 }
@@ -50,13 +51,13 @@ function sendLineInfo(line){
   var line = [];
   var clientInfo = [];
   var lineIndex = 0;
+  var commander = {};
 
 wss.on('connection', (ws) => {
 
   wss.broadcast(JSON.stringify({type:"count", count:wss.clients.size-1}));
   ws.on('message',(str)=>{
     var theData = JSON.parse(str);
-    console.log(theData);
     var messType = theData.type;
 
 
@@ -78,6 +79,11 @@ wss.on('connection', (ws) => {
       sendLineInfo(line);
     }
   });
+  if(line.length){
+    commander = line[0].ws;
+    console.log(commander);
+  }
+
   ws.on('close', () => {
     // removing the client from line
     lineIndex = line.findIndex(arr => arr.ws === ws);
