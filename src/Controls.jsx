@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
 
-// const directions = ["l", 'u', 'r', 'd'];
-
 class Controls extends Component {
   constructor(props) {
     super(props);
