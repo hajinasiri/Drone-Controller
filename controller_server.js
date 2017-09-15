@@ -7,6 +7,18 @@ var rollingSpider = new RollingSpider({
   uuid: 'RS_W056147'
   // uuid: 'RS_B138046'
 });
+
+var ACTIVE = true;
+var STEPS = 5;
+
+function cooldown() {
+  ACTIVE = false;
+  setTimeout(function() {
+    ACTIVE = true;
+  }, STEPS * 12);
+};
+
+
 var i = 1;
 while(i === 1){
   i = 0;
@@ -22,6 +34,13 @@ while(i === 1){
       rollingSpider.flatTrim();
       rollingSpider.startPing();
       rollingSpider.flatTrim();
+
+      // rollingSpider.on('battery', function () {
+      // console.log('Battery: ' + rollingSpider.status.battery + '%');
+      // rollingSpider.signalStrength(function (err, val) {
+      //   console.log('Signal: ' + val + 'dBm');
+      // });
+      // });
 
 
       var WebSocket = require('ws')
@@ -40,21 +59,21 @@ while(i === 1){
           }else if(data.content === "land"){
             rollingSpider.land();
           }else if(data.content === "up"){
-            rollingSpider.up();
+            rollingSpider.up({ steps: STEPS });
           }else if(data.content === "down"){
-            rollingSpider.down();
+            rollingSpider.down({ steps: STEPS });
           }else if(data.content === "forward"){
-            rollingSpider.forward();
+            rollingSpider.forward({ steps: STEPS });
           }else if(data.content === "backward"){
-            rollingSpider.backward();
+            rollingSpider.backward({ steps: STEPS });
           }else if(data.content === "left"){
-            rollingSpider.left();
+            rollingSpider.left({ steps: STEPS });
           }else if(data.content === "right"){
-            rollingSpider.right();
+            rollingSpider.right({ steps: STEPS });
           }else if(data.content === "clockwise"){
-            rollingSpider.clockwise();
+            rollingSpider.clockwise({ steps: STEPS });
           }else if(data.content === "counterclockwise"){
-            rollingSpider.counterClockwise()
+            rollingSpider.counterClockwise({ steps: STEPS });
           }else if(data.content === "back"){
             rollingSpider.backFlip();
           }
