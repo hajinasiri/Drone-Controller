@@ -32,10 +32,8 @@ function sendLineInfo(line){
         lineInfo.splice(-1,1);//removing the initial position value
         lineInfo.push(clientIndex);//adding the actual position of the user to the array
       }
-      if(lineInfo.length > 1){
-        client.send(JSON.stringify({type:"lineInfo", lineInfo:lineInfo}));
-        console.log(lineInfo);
-      }
+      client.send(JSON.stringify({type:"lineInfo", lineInfo:lineInfo}));
+      console.log("message to clients is", lineInfo);
     }
   });
 }
@@ -52,22 +50,20 @@ function sendLineInfo(line){
   var clientInfo = [];
   var lineIndex = 0;
   var commander = {};
-
+  var oldLineLength = 0;
 wss.on('connection', (ws) => {
 
   wss.broadcast(JSON.stringify({type:"count", count:wss.clients.size-1}));
   ws.on('message',(str)=>{
     var theData = JSON.parse(str);
     var messType = theData.type;
-
-
     if(messType === "controller"){
       controller = ws;
       controller.send(JSON.stringify({content: "I am recognized as the controller"}));
     // putting the controller client in the controller variable
     }else if (messType === "postNotification" || messType === "name"){
       wss.broadcast(str);
-    }else if(messType === "command"){
+    }else if(messType === "command" && commander === ws){
       controller.send(str)
     }else if(messType === "request"){
       if(theData.reqstate === -1){//if it is controll request
@@ -79,10 +75,26 @@ wss.on('connection', (ws) => {
       sendLineInfo(line);
     }
   });
-  if(line.length){
-    commander = line[0].ws;
-    console.log(commander);
-  }
+  var count = 0;
+  setInterval(function(){
+    if(line.length > 0){
+      commander = line[0].ws;
+    }
+    count += 1;
+    //Below will change the commander every 30 second
+    if(count === 60){
+      oldLineLength = line.length;
+      line.shift();
+      commander = {};
+      count = 0;
+      // to check if the line changed (line was not empty before)
+      if(oldLineLength !== line.length){
+        console.log("new line is sent to clients");
+        sendLineInfo(line);
+      }
+    }
+  }, 500)
+
 
   ws.on('close', () => {
     // removing the client from line
@@ -91,10 +103,7 @@ wss.on('connection', (ws) => {
       line.splice(lineIndex, 1);
     }
     sendLineInfo(line);
-    // console.log('Client disconnected');
     wss.broadcast(JSON.stringify({type:"count", count:wss.clients.size}));
-    // line[0].send(JSON.stringify({type:"count", count:1000}))
   });
 
 });
-
