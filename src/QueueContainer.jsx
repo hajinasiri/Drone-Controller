@@ -67,15 +67,30 @@ class QueueContainer extends Component {
 // const Child = ({onClick, text}) => (<button onClick={onClick}>{text}</button>)
 
   render() {
+    const queueButton = (usersInQueue) => {
+      var position = usersInQueue.findIndex((user) => (this.props.currentUser === user));
+      console.log(position);
+        if (position > 0)
+        {
+          return `You are #${index} in Queue`;
+
+        } else {
+          return "Request Control";
+        }
+    }
+
     return (
+
     <div>
-      <div className="request-control">
-      <button className="request" onClick={this.handleClick}>{this.state.mytext ? 'Request Control' : 'Cancel Request'}</button>
-      </div>
+     <div className="request-control">
+              <button className="request" onClick={this.handleClick}>{queueButton(this.props.lineInfo)}</button>
+            </div>
+
       <div className="queue-container">
         <div className="queue-heading">
           Current Queue
         </div>
+
         <div className="queue-list">
           <div className="users-item active">
             <div className="queue-current">
