@@ -1,10 +1,13 @@
 import React, {Component} from 'react';
+import ReactDom from 'react-dom';
+// import Popup from 'react-popup';
+import uuid from 'uuid/v1';
 import ChatContainer from './ChatContainer.jsx';
 import Header from './Header.jsx';
 import Video from './Video.jsx';
 import Controls from './Controls.jsx';
 import QueueContainer from './QueueContainer.jsx';
-const uuid = require('uuid/v1');
+import MyPopup from './popup.jsx';
 
 class App extends Component {
   constructor(props){
@@ -30,9 +33,9 @@ class App extends Component {
     this.ws.send(JSON.stringify(new_obj[0]));
   }
 
-  updatename (newname, oldname) {
-    if(!(newname === oldname)){
-      var obj = {newname:newname, oldname: oldname, type:"name"};
+  updatename (newname) {
+    if(newname){
+      var obj = {newname:newname, oldname: " ", type:"name"};
       this.ws.send(JSON.stringify(obj));
       this.setState({
         currentUser: {
@@ -40,18 +43,20 @@ class App extends Component {
         }
       });
     }
+    console.log(this.state.currentUser.name);
   }
 
   componentDidMount() {
     this.ws = new WebSocket('ws://' + location.hostname + ':3001');
     this.ws.addEventListener('open', () => {
+
     });
     this.ws.addEventListener('message', (event) => {
       var temp = event.data;
       var data=JSON.parse(event.data);
       var mymass = {};
       if(data.type === "name"){
-        var news = [{username:"" , content:(data.oldname + " changed their name to "+ data.newname), id:uuid()}];
+        var news = [{username:"" , content:(data.newname + " joined the page "), id:uuid()}];
         mymass = this.state.messages.concat(news);
         this.setState({messages: mymass});
       }else if(data.type === "postNotification"){
@@ -71,14 +76,16 @@ class App extends Component {
     setTimeout(() => {
     console.log("Simulating incoming message");
     });
+    MyPopup.plugins().prompt('', 'Type your name', this.updatename);
   }
-
   componentWillUnmount() {
     this.ws.close()
   }
   render() {
+
     return (
       <div className="container">
+        <MyPopup className= "popup" closeBtn={false} closeOnOutsideClick={false} />
         <div className="main">
           <Header />
           <Video />
@@ -93,4 +100,5 @@ class App extends Component {
     );
   }
 }
+
 export default App;
