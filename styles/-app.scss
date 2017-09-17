@@ -1,3 +1,4 @@
+@fa-font-path:   "../font";
 
 .container{
   display:flex;
@@ -138,13 +139,7 @@
   top: auto;
 }
 
-.request-control {
-  background: grey;
-  width: 250px;
-  height: 50px;
-  margin: 20px;
-  text-align: center;
-}
+
 
 .queue-container {
   background: grey;

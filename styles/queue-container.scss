@@ -11,31 +11,42 @@
 }
 
 .queue-list {
-  background: deepskyblue;
-  padding: 10px;
   overflow: scroll;
 }
 
 .users-item {
-  background: rgba(255,255,255,0.2);
+  background: rgb(216,216,216);
   border-left: 10px solid rgba(0,0,0,0.2);
   padding: 10px;
 }
 
 .users-item:hover,
 .users-item.active {
-  background: rgba(255,255,255,0.4);
+  background: rgb(180,180,180);
 }
 
 .users-name{
   padding-right: 50px;
+  padding-left: 20px;
 }
 
 .request{
   background: black;
   color: white;
-  padding: 10px;
+  padding: 15px;
   cursor: pointer;
   text-transform: uppercase;
+  width: 400px;
+  font-weight: bold;
+}
+
+#request-logo{
+  height: 20px;
+}
+
+.queue-heading{
+  padding-bottom: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 

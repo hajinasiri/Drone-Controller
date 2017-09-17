@@ -1,6 +1,4 @@
 .chatbar {
-  background: tomato;
-  border-top: 1px solid black;
   bottom: 0;
   display: flex;
   padding: 5px;
@@ -10,15 +8,18 @@
 
 .chatbar-message,
 .chatbar-username {
-  display: block;
   margin: 5px;
-  padding: 0 9px;
+  background-color: #8392a2;
+
 }
 
 .chatbar-message {
-  flex: 8;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  text-align: left;
 }
 
 .chatbar-username {
-  flex: 2;
+  border:none;
 }

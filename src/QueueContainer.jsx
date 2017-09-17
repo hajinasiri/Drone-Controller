@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 class QueueContainer extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       reqstate: -1,
       mytext: "Request Control",
@@ -80,17 +79,13 @@ class QueueContainer extends Component {
     }
 
     return (
-
     <div>
      <div className="request-control">
-              <button className="request" onClick={this.handleClick}>{queueButton(this.props.lineInfo)}</button>
+              <button className="request" onClick={this.handleClick}>{queueButton(this.props.lineInfo)} <img id ="request-logo" src="../img/request-icon.png" /> </button>
             </div>
 
       <div className="queue-container">
-        <div className="queue-heading">
-          Current Queue
-        </div>
-
+        <div className="queue-heading">Current Queue</div>
         <div className="queue-list">
           <div className="users-item active">
             <div className="queue-current">
@@ -105,7 +100,7 @@ class QueueContainer extends Component {
           </div>
 
           <div className="users-item">
-            <span className="users-name">...0 USERS IN QUEUE</span>
+            <span className="users-name">..5 MORE USERS IN QUEUE</span>
           </div>
         </div>
       </div>
