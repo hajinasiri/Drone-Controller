@@ -89,18 +89,18 @@ class QueueContainer extends Component {
         <div className="queue-list">
           <div className="users-item active">
             <div className="queue-current">
-              <span className="users-name">ESHA</span>
+              <span className="users-name">{this.props.lineInfo[0]}</span>
               <button className="button-click" onClick={this.startTimer}>Start</button>
               <span> {this.state.time.s} seconds remaining</span>
             </div>
           </div>
 
           <div className="users-item">
-            <span className="users-name">{this.state.uname}</span>
+            <span className="users-name">{this.props.lineInfo[1]}</span>
           </div>
 
           <div className="users-item">
-            <span className="users-name">..5 MORE USERS IN QUEUE</span>
+            <span className="users-name">..0 USERS IN QUEUE</span>
           </div>
         </div>
       </div>
