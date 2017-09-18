@@ -85,7 +85,7 @@ class App extends Component {
 
     return (
       <div className="container">
-        <MyPopup className= "popup" closeBtn={false} closeOnOutsideClick={false} />
+        <MyPopup className= "popup" closeBtn={false} closeOnOutsideClick={false}  />
         <div className="main">
           <Header />
           <Video />
