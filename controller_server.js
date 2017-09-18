@@ -67,6 +67,10 @@ while(i === 1){
             rollingSpider.clockwise({ steps: STEPS });
           }else if(data.content === "counterclockwise"){
             rollingSpider.counterClockwise({ steps: STEPS });
+          }else if (data.content === "frontflip"){
+            rollingSpider.frontFlip();
+          }else if (data.content === "backflip"){
+            rollingSpider.backFlip();
           }
         }
       });
