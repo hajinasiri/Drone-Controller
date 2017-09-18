@@ -4,7 +4,7 @@
 var RollingSpider = require('rolling-spider');
 var temporal = require('temporal');
 var rollingSpider = new RollingSpider({
-  uuid: 'RS_W056147'
+  // uuid: 'RS_W056147'
   // uuid: 'RS_B138046'
 });
 
@@ -34,13 +34,6 @@ while(i === 1){
       rollingSpider.flatTrim();
       rollingSpider.startPing();
       rollingSpider.flatTrim();
-
-      // rollingSpider.on('battery', function () {
-      // console.log('Battery: ' + rollingSpider.status.battery + '%');
-      // rollingSpider.signalStrength(function (err, val) {
-      //   console.log('Signal: ' + val + 'dBm');
-      // });
-      // });
 
 
       var WebSocket = require('ws')
