@@ -1,6 +1,4 @@
 import React, {Component} from 'react';
-// import apikey from 'apikey';
-import YoutubeLive from 'youtube-live-react';
 
 class Video extends Component {
   render() {
@@ -10,7 +8,7 @@ class Video extends Component {
         <iframe
           src="http://player.twitch.tv/?channel=hkimmm&muted=true"
           height="300"
-          width="400"
+          width="800"
           frameborder="0"
           scrolling="no"
           allowfullscreen="true" />

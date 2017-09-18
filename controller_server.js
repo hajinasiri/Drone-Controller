@@ -8,15 +8,15 @@ var rollingSpider = new RollingSpider({
   // uuid: 'RS_B138046'
 });
 
-var ACTIVE = true;
+// var ACTIVE = true;
 var STEPS = 5;
 
-function cooldown() {
-  ACTIVE = false;
-  setTimeout(function() {
-    ACTIVE = true;
-  }, STEPS * 12);
-};
+// function cooldown() {
+//   ACTIVE = false;
+//   setTimeout(function() {
+//     ACTIVE = true;
+//   }, STEPS * 12);
+// };
 
 
 var i = 1;
