@@ -32,7 +32,16 @@ function sendLineInfo(line){
         lineInfo.splice(-1,1);//removing the initial position value
         lineInfo.push(clientIndex);//adding the actual position of the user to the array
       }
-      client.send(JSON.stringify({type:"lineInfo", lineInfo:lineInfo}));
+      let lineLength = lineInfo.length;
+      let linesend = [];
+      if(lineLength === 1){
+        linesend = ["","",-1];
+      }else if(lineLength === 2){
+        linesend = [lineInfo[0], "",0];
+      }else{
+        linesend = lineInfo;
+      }
+      client.send(JSON.stringify({type:"lineInfo", lineInfo:linesend}));
       console.log("message to clients is", lineInfo);
     }
   });
