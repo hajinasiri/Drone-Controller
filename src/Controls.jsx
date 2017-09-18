@@ -58,6 +58,8 @@ class Controls extends Component {
           <div className="center-button-container">
             <div className="center-button" onMouseDown={() => this.sendcommand("takeoff")}> Take Off </div>
             <div className="center-button" onMouseDown={() => this.sendcommand("land")}> Land </div>
+            <div className="center-button" onMouseDown={() => this.sendcommand("frontflip")}> front flip </div>
+            <div className="center-button" onMouseDown={() => this.sendcommand("backflip")}> back flip </div>
           </div>
 
           <div className="button-container rotated-buttons">

@@ -83,7 +83,7 @@ wss.on('connection', (ws) => {
     }
     count += 1;
     //Below will change the commander every 30 second
-    if(count === 60){
+    if(count === 12000){
       oldLineLength = line.length;
       line.shift();
       commander = {};

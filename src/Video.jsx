@@ -9,9 +9,7 @@ class Video extends Component {
           src="http://player.twitch.tv/?channel=hkimmm&muted=true"
           height="300"
           width="800"
-          frameborder="0"
-          scrolling="no"
-          allowfullscreen="true" />
+          scrolling="no" />
       </div>
     </div>
     )
