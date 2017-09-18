@@ -32,7 +32,7 @@ class ChatBar extends Component {
   handleClick = (event) => {
     if (event.charCode === 13) {
       var mymess = event.target.value;
-      this.props.updateme(mymess,1,this.state.uname);
+      this.props.updateme(mymess,1,this.props.currentUser.name);
       this.setState({text:""})
     }
   }
