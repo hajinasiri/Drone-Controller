@@ -41,9 +41,11 @@ class App extends Component {
         currentUser: {
           name: newname
         }
+      }, ()=>{
+        console.log(this.state.currentUser.name);
       });
     }
-    console.log(this.state.currentUser.name);
+
   }
 
   componentDidMount() {
@@ -85,7 +87,7 @@ class App extends Component {
 
     return (
       <div className="container">
-        <MyPopup className= "popup" closeBtn={false} closeOnOutsideClick={false} />
+        <MyPopup className= "popup" closeBtn={false} closeOnOutsideClick={false}  />
         <div className="main">
           <Header />
           <Video />

@@ -56,6 +56,7 @@ wss.on('connection', (ws) => {
   wss.broadcast(JSON.stringify({type:"count", count:wss.clients.size-1}));
   ws.on('message',(str)=>{
     var theData = JSON.parse(str);
+    console.log(theData.content);
     var messType = theData.type;
     if(messType === "controller"){
       controller = ws;

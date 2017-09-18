@@ -6,7 +6,6 @@ import Popup from 'react-popup';
 class Prompt extends Component {
   constructor(props) {
       super(props);
-
       this.state = {
           value: this.props.defaultValue
       };
@@ -26,7 +25,7 @@ class Prompt extends Component {
       this.setState({value: value});
   }
   render() {
-      return <input type="text" placeholder={this.props.placeholder} className="mm-popup__input" value={this.state.value} onChange={this.onChange} />;
+      return <input type="text" placeholder={this.props.placeholder} className="mm-popup__input" onChange={this.onChange} />;
   }
 }
 /** Prompt plugin */
