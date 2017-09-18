@@ -1,21 +1,20 @@
 .popup{
-
-height:20%;
-padding:2em;
-position:absolute;
+  height:20%;
+  padding:2em;
+  position:absolute;
+  z-index: 10000;
 }
 
 .popup__box{
   width:60%;
   border-style:solid;
-background:white;
-padding:3em;
-margin-top:20%;
-margin-left:40%;
-margin-top:40%;
-
+  background:white;
+  padding:3em;
+  margin-top:20%;
+  margin-left:40%;
+  margin-top:40%;
 }
 
 .mm-popup__input{
-margin-bottom:1em;
+  margin-bottom:1em;
 }
