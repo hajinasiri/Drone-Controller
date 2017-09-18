@@ -41,9 +41,11 @@ class App extends Component {
         currentUser: {
           name: newname
         }
+      }, ()=>{
+        console.log(this.state.currentUser.name);
       });
     }
-    console.log(this.state.currentUser.name);
+
   }
 
   componentDidMount() {
