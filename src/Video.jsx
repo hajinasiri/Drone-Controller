@@ -7,12 +7,13 @@ class Video extends Component {
     return (
     <div>
       <div className="video">
-        <YoutubeLive
-          iframeWidth={400}
-          iframeHeight={300}
-          maxResults={1}
-          youtubeChannelId='UCLA_DiR1FfKNvjuUpBHmylQ'
-          googleApiKey= { process.env.GOOGLE_API_KEY } />
+        <iframe
+          src="http://player.twitch.tv/?channel=hkimmm&muted=true"
+          height="300"
+          width="400"
+          frameborder="0"
+          scrolling="no"
+          allowfullscreen="true" />
       </div>
     </div>
     )
