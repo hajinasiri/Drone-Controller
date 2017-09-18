@@ -5,7 +5,6 @@ class NavBar extends Component {
     return (
     <div>
       <nav className="navbar">
-      <span className="counter">{this.props.count} User online</span>
       </nav>
     </div>
     )

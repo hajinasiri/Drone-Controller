@@ -3,7 +3,6 @@ import React, {Component} from 'react';
 class QueueContainer extends Component {
   constructor(props) {
     super(props);
-
     this.state = {
       reqstate: -1,
       mytext: "Request Control",
@@ -67,15 +66,26 @@ class QueueContainer extends Component {
 // const Child = ({onClick, text}) => (<button onClick={onClick}>{text}</button>)
 
   render() {
+    const queueButton = (usersInQueue) => {
+      var position = usersInQueue.findIndex((user) => (this.props.currentUser === user));
+      console.log(position);
+        if (position > 0)
+        {
+          return `You are #${index} in Queue`;
+
+        } else {
+          return "Request Control";
+        }
+    }
+
     return (
     <div>
-      <div className="request-control">
-      <button className="request" onClick={this.handleClick}>{this.state.mytext ? 'Request Control' : 'Cancel Request'}</button>
-      </div>
+     <div className="request-control">
+              <button className="request" onClick={this.handleClick}>{queueButton(this.props.lineInfo)} <img id ="request-logo" src="../img/request-icon.png" /> </button>
+            </div>
+
       <div className="queue-container">
-        <div className="queue-heading">
-          Current Queue
-        </div>
+        <div className="queue-heading">Current Queue</div>
         <div className="queue-list">
           <div className="users-item active">
             <div className="queue-current">
@@ -90,7 +100,7 @@ class QueueContainer extends Component {
           </div>
 
           <div className="users-item">
-            <span className="users-name">...0 USERS IN QUEUE</span>
+            <span className="users-name">..5 MORE USERS IN QUEUE</span>
           </div>
         </div>
       </div>
