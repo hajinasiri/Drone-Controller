@@ -100,7 +100,7 @@ class QueueContainer extends Component {
           </div>
 
           <div className="users-item">
-            <span className="users-name">..0 USERS IN QUEUE</span>
+            <span className="users-name">{this.props.lineLength}</span>
           </div>
         </div>
       </div>
