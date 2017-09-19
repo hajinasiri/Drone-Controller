@@ -57,6 +57,7 @@ class App extends Component {
     this.ws.addEventListener('message', (event) => {
       var temp = event.data;
       var data=JSON.parse(event.data);
+      console.log("message is",data);
       var mymass = {};
       if(data.type === "name"){
         var news = [{username:"" , content:(data.newname + " joined the page "), id:uuid()}];
@@ -65,12 +66,11 @@ class App extends Component {
       }else if(data.type === "postNotification"){
         mymass = this.state.messages.concat([data]);
         this.setState({messages: mymass});
-
       }else if(data.type === "count"){
         this.setState({count:data.count})
       }else if(data.type === "lineInfo"){
         this.setState({lineInfo: data.lineInfo});
-        console.log("lineInfo is",this.state.lineInfo);
+
         if(lineInfo.length < 4){
           this.setState({lineLength: ""});
         } else{

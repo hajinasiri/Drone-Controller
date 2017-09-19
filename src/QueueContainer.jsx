@@ -16,20 +16,19 @@ class QueueContainer extends Component {
   }
 
   handleClick() {
-    if(this.state.reqstate === 1){
-      if(confirm('Cancel the request?')) {
+    if(this.props.lineInfo[this.props.lineInfo.length - 1] !== -1){
+      if(confirm('Are you sure to cancel the request? ')) {
         this.setState(prevState => ({
           mytext: "Request Control",
-          reqstate: -1
+
         }));
-        this.props.sendIt({type:"request",name:this.props.currentUser.name, reqstate: this.state.reqstate});
       }
-    }else{
+    } else {
       this.setState(prevState => ({
         mytext: "Cancel the Request",
-        reqstate: 1
+
       }));
-      this.props.sendIt({type:"request",name:this.props.currentUser.name, reqstate: this.state.reqstate});
+
     }
   }
 
@@ -66,17 +65,6 @@ class QueueContainer extends Component {
 // const Child = ({onClick, text}) => (<button onClick={onClick}>{text}</button>)
 
   render() {
-    const queueButton = (usersInQueue) => {
-      var position = usersInQueue.findIndex((user) => (this.props.currentUser === user));
-      console.log(position);
-        if (position > 0)
-        {
-          return `You are #${index} in Queue`;
-
-        } else {
-          return "Request Control";
-        }
-    }
 
     return (
     <div>
