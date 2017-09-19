@@ -19,14 +19,14 @@ class QueueContainer extends Component {
     if(this.state.reqstate === 1){
       if(confirm('Cancel the request?')) {
         this.setState(prevState => ({
-          mytext: !prevState.mytext,
+          mytext: "Request Control",
           reqstate: -1
         }));
         this.props.sendIt({type:"request",name:this.props.currentUser.name, reqstate: this.state.reqstate});
       }
     }else{
       this.setState(prevState => ({
-        mytext: !prevState.mytext,
+        mytext: "Cancel the Request",
         reqstate: 1
       }));
       this.props.sendIt({type:"request",name:this.props.currentUser.name, reqstate: this.state.reqstate});
@@ -81,9 +81,8 @@ class QueueContainer extends Component {
     return (
     <div>
      <div className="request-control">
-              <button className="request" onClick={this.handleClick}>{queueButton(this.props.lineInfo)} <img id ="request-logo" src="../img/request-icon.png" /> </button>
+              <button className="request" onClick={this.handleClick}>{this.state.mytext }<img id ="request-logo" src="../img/request-icon.png" /> </button>
             </div>
-
       <div className="queue-container">
         <div className="queue-heading">Current Queue</div>
         <div className="queue-list">
