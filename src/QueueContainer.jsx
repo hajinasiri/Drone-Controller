@@ -16,18 +16,22 @@ class QueueContainer extends Component {
   }
 
   handleClick() {
-    if(this.props.lineInfo[this.props.lineInfo.length - 1] !== -1){
-      if(confirm('Are you sure to cancel the request? ')) {
+
+    console.log((this.props.lineInfo[this.props.lineInfo.length - 1] !== -1));
+
+    if((this.props.lineInfo.length !== 0) && (this.props.lineInfo[this.props.lineInfo.length - 1] !== -1)){
+      if(confirm('Cancel the request?')) {
         this.setState(prevState => ({
           mytext: "Request Control",
-
         }));
+        this.props.sendIt({type:"request",name:this.props.currentUser.name, reqstate: -1});
       }
-    } else {
+    }else{
+      console.log("we are here")
       this.setState(prevState => ({
         mytext: "Cancel the Request",
-
       }));
+      this.props.sendIt({type:"request",name:this.props.currentUser.name, reqstate: 1});
 
     }
   }
@@ -65,11 +69,10 @@ class QueueContainer extends Component {
 // const Child = ({onClick, text}) => (<button onClick={onClick}>{text}</button>)
 
   render() {
-
     return (
     <div>
      <div className="request-control">
-              <button className="request" onClick={this.handleClick}>{this.state.mytext }<img id ="request-logo" src="../img/request-icon.png" /> </button>
+              <button className="request" onClick={this.handleClick}>{this.props.buttontext }<img id ="request-logo" src="../img/request-icon.png" /> </button>
             </div>
       <div className="queue-container">
         <div className="queue-heading">Current Queue</div>

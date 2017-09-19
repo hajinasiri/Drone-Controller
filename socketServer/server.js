@@ -100,9 +100,9 @@ wss.on('connection', (ws) => {
       } else if (messType === "command" && commander === ws) {
           controller.send(str)
       } else if (messType === "request") {
-          if (theData.reqstate === -1) { //if it is controll request
+          if (theData.reqstate === 1) { //if it is controll request
               line.push({ ws: ws, name: theData.name });
-          } else if (theData.reqstate === 1) { //if it is cancel request removes the client from line
+          } else if (theData.reqstate === -1) { //if it is cancel request removes the client from line
               lineIndex = line.findIndex(arr => arr.ws === ws);
               line.splice(lineIndex, 1);
           }
