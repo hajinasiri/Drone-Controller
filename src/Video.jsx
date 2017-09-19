@@ -7,11 +7,9 @@ class Video extends Component {
       <div className="video">
         <iframe
           src="http://player.twitch.tv/?channel=hkimmm&muted=true"
-          height="300"
+          height="350"
           width="800"
-          frameborder="0"
-          scrolling="no"
-          allowfullscreen="true" />
+          scrolling="no" />
       </div>
     </div>
     )

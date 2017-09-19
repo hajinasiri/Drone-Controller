@@ -36,7 +36,6 @@ class Controls extends Component {
     return (
     <div>
       <div className="controls">
-        <div className="controls-heading"> Control Panel </div>
 
         <div className="control-panel-container">
 
@@ -53,9 +52,11 @@ class Controls extends Component {
             <button className="button" onMouseDown={() => this.onMouseDown("backward")} onMouseUp={() => this.onMouseUp("backward")}>
               <span className="label">Move Backward</span>
             </button>
+            <div className="center-button-flip" onMouseDown={() => this.sendcommand("frontflip")}> <img src="../img/front-flip.png" className="flip-icon"/> <span className="flip-label">front flip </span></div>
           </div>
 
           <div className="center-button-container">
+            <div className="controls-heading"> Control Panel </div>
             <div className="center-button" onMouseDown={() => this.sendcommand("takeoff")}> Take Off </div>
             <div className="center-button" onMouseDown={() => this.sendcommand("land")}> Land </div>
           </div>
@@ -73,6 +74,7 @@ class Controls extends Component {
             <button className="button" onMouseDown={() => this.onMouseDown("down")} onMouseUp={() => this.onMouseUp("down")}>
               <span className="label">Lower</span>
             </button>
+            <div className="center-button-flip" onMouseDown={() => this.sendcommand("backflip")}><img src="../img/back-flip.png" className="flip-icon"/> back flip </div>
           </div>
         </div>
       </div>

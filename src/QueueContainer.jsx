@@ -16,6 +16,7 @@ class QueueContainer extends Component {
   }
 
   handleClick() {
+
     console.log((this.props.lineInfo[this.props.lineInfo.length - 1] !== -1));
 
     if((this.props.lineInfo.length !== 0) && (this.props.lineInfo[this.props.lineInfo.length - 1] !== -1)){
@@ -31,6 +32,7 @@ class QueueContainer extends Component {
         mytext: "Cancel the Request",
       }));
       this.props.sendIt({type:"request",name:this.props.currentUser.name, reqstate: 1});
+
     }
   }
 

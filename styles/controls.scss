@@ -1,43 +1,42 @@
 .controls{
   position: fixed;
   bottom: 0;
-}
-
-.control-panel-line {
-  width: 100%;
-  text-align: left;
-  border-bottom: 1px solid #000;
-  line-height: 0.1em;
-  margin: 10px 0 20px
-}
-
-.control-panel-line span {
-  background: #fff;
-  padding: 0 10px;
+  padding-left: 12px;
 }
 
 .control-panel-container {
   display: flex;
   justify-content: space-around;
+  width: 110%;
 }
 
 .button-container {
   display: flex;
   flex-wrap: wrap;
-  width: 240px;
+  width: 200px;
 }
 
 .center-button-container {
-  text-align: center
+  text-align: center;
+  padding-top: 20px;
+}
+
+.controls-heading {
+  text-transform: uppercase;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  padding-bottom: 25px;
 }
 
 .center-button {
   color: white;
-  background: grey;
+  background: #4390C1;
   padding: 20px;
-  margin-top: 46px;
-}
+  margin-bottom: 20px;
+  border-radius: 5px;
 
+}
 
 .rotated-buttons {
   transform: rotate(45deg);
@@ -45,10 +44,11 @@
 }
 
 .rotated-buttons .button {
-  background: #4B565F;
+  background: #EBECEE;
+  border-radius: 5px;
   border: 0;
   box-sizing: border-box;
-  color: #fff;
+  color: #545454;
   display: block;
   font-size: 13px;
   font-weight: bold;
@@ -100,3 +100,29 @@
   bottom: 10px;
   top: auto;
 }
+
+.button-container {
+  position: relative;
+}
+
+.center-button-flip {
+  left: 37%;
+  top: 37%;
+  position: absolute;
+  height: 76px;
+  width: 76px;
+  border-radius: 50%;
+  background: #F7F7F7;
+  transform: rotate(-45deg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.flip-icon {
+  height: 30px;
+  width: 30px;
+  padding-left: 20px;
+  padding-top: 7px
+}
+

@@ -1,25 +1,31 @@
 .chatbar {
-  bottom: 0;
-  display: flex;
-  padding: 5px;
-  position: fixed;
-  width: 100%;
+  bottom: 10px;
+  position: absolute;
 }
 
 .chatbar-message,
 .chatbar-username {
   margin: 5px;
-  background-color: #8392a2;
-
 }
 
 .chatbar-message {
-  border-left: none;
-  border-right: none;
-  border-top: none;
+  border: none;
+  border-bottom: 1px solid;
   text-align: left;
+  width: 60%;
+  padding: 5px;
+  background-color: #F7F7F7;
+}
+
+input:focus {
+  outline: none;
 }
 
 .chatbar-username {
-  border:none;
+  border: none;
+  background-color: #F7F7F7;
+  text-transform: uppercase;
+  font-weight: bold;
+  padding-left: 30px;
+  width: 30%;
 }
