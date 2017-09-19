@@ -1,19 +1,13 @@
 .controls{
   position: fixed;
   bottom: 0;
-}
-
-.control-panel-line {
-  width: 100%;
-  text-align: left;
-  border-bottom: 1px solid #000;
-  line-height: 0.1em;
-  margin: 10px 0 20px
+  padding-left: 12px;
 }
 
 .control-panel-container {
   display: flex;
   justify-content: space-around;
+  width: 110%;
 }
 
 .button-container {
@@ -24,16 +18,25 @@
 
 .center-button-container {
   text-align: center;
+  padding-top: 20px;
+}
+
+.controls-heading {
+  text-transform: uppercase;
+  padding: 10px;
+  font-weight: 600;
+  font-size: 18px;
+  padding-bottom: 25px;
 }
 
 .center-button {
   color: white;
   background: #4390C1;
   padding: 20px;
-  margin-top: 5px;
+  margin-bottom: 20px;
   border-radius: 5px;
-}
 
+}
 
 .rotated-buttons {
   transform: rotate(45deg);
@@ -109,6 +112,17 @@
   height: 76px;
   width: 76px;
   border-radius: 50%;
-  background: grey;
+  background: #F7F7F7;
   transform: rotate(-45deg);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
 }
+
+.flip-icon {
+  height: 30px;
+  width: 30px;
+  padding-left: 20px;
+  padding-top: 7px
+}
+
