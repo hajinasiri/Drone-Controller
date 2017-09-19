@@ -13,11 +13,12 @@ class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      currentUser: {name: "New Guest"},
+      currentUser: {name: ""},
       messages: [],
       users: [],
       count:0,
-      lineInfo:[]//[your position in line, other people in line's name]
+      lineInfo:[],//[your position in line, other people in line's name]
+      lineLength: ""
     };
     this.updateme = this.updateme.bind(this);
     this.updatename = this.updatename.bind(this);
@@ -70,6 +71,11 @@ class App extends Component {
       }else if(data.type === "lineInfo"){
         this.setState({lineInfo: data.lineInfo});
         console.log("lineInfo is",this.state.lineInfo);
+        if(lineInfo.length < 4){
+          this.setState({lineLength: ""});
+        } else{
+          this.setState({lineLength: lineInfo.length - 3 + "is in line"});
+        }
       }
     });
     this.ws.onerror = e => this.setState({ error: 'WebSocket error' })
@@ -94,7 +100,7 @@ class App extends Component {
           <Controls sendIt={this.sendIt}/>
         </div>
         <div className="sidebar">
-          <QueueContainer currentUser={this.state.currentUser} lineInfo={this.state.lineInfo} sendIt={this.sendIt} />
+          <QueueContainer lineLength={this.props.lineLength}currentUser={this.state.currentUser} lineInfo={this.state.lineInfo} sendIt={this.sendIt} />
 
           <ChatContainer count={this.state.count} Messages={this.state.messages} currentUser={this.state.currentUser} updatename={this.updatename} updateme={this.updateme}/>
         </div>

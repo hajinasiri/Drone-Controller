@@ -19,14 +19,14 @@ class QueueContainer extends Component {
     if(this.state.reqstate === 1){
       if(confirm('Cancel the request?')) {
         this.setState(prevState => ({
-          mytext: !prevState.mytext,
+          mytext: "Request Control",
           reqstate: -1
         }));
         this.props.sendIt({type:"request",name:this.props.currentUser.name, reqstate: this.state.reqstate});
       }
     }else{
       this.setState(prevState => ({
-        mytext: !prevState.mytext,
+        mytext: "Cancel the Request",
         reqstate: 1
       }));
       this.props.sendIt({type:"request",name:this.props.currentUser.name, reqstate: this.state.reqstate});
@@ -81,26 +81,25 @@ class QueueContainer extends Component {
     return (
     <div>
      <div className="request-control">
-              <button className="request" onClick={this.handleClick}>{queueButton(this.props.lineInfo)} <img id ="request-logo" src="../img/request-icon.png" /> </button>
+              <button className="request" onClick={this.handleClick}>{this.state.mytext }<img id ="request-logo" src="../img/request-icon.png" /> </button>
             </div>
-
       <div className="queue-container">
         <div className="queue-heading">Current Queue</div>
         <div className="queue-list">
           <div className="users-item active">
             <div className="queue-current">
-              <span className="users-name">ESHA</span>
+              <span className="users-name">{this.props.lineInfo[0]}</span>
               <button className="button-click" onClick={this.startTimer}>Start</button>
               <span> {this.state.time.s} seconds remaining</span>
             </div>
           </div>
 
           <div className="users-item">
-            <span className="users-name">{this.state.uname}</span>
+            <span className="users-name">{this.props.lineInfo[1]}</span>
           </div>
 
           <div className="users-item">
-            <span className="users-name">..5 MORE USERS IN QUEUE</span>
+            <span className="users-name">{this.props.lineLength}</span>
           </div>
         </div>
       </div>
