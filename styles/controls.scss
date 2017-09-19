@@ -11,11 +11,6 @@
   margin: 10px 0 20px
 }
 
-.control-panel-line span {
-  background: #fff;
-  padding: 0 10px;
-}
-
 .control-panel-container {
   display: flex;
   justify-content: space-around;
@@ -24,18 +19,19 @@
 .button-container {
   display: flex;
   flex-wrap: wrap;
-  width: 240px;
+  width: 200px;
 }
 
 .center-button-container {
-  text-align: center
+  text-align: center;
 }
 
 .center-button {
   color: white;
-  background: grey;
+  background: #4390C1;
   padding: 20px;
   margin-top: 5px;
+  border-radius: 5px;
 }
 
 
@@ -45,10 +41,11 @@
 }
 
 .rotated-buttons .button {
-  background: #4B565F;
+  background: #EBECEE;
+  border-radius: 5px;
   border: 0;
   box-sizing: border-box;
-  color: #fff;
+  color: #545454;
   display: block;
   font-size: 13px;
   font-weight: bold;
@@ -99,4 +96,19 @@
 .rotated-buttons .button:nth-child(4):before {
   bottom: 10px;
   top: auto;
+}
+
+.button-container {
+  position: relative;
+}
+
+.center-button-flip {
+  left: 37%;
+  top: 37%;
+  position: absolute;
+  height: 76px;
+  width: 76px;
+  border-radius: 50%;
+  background: grey;
+  transform: rotate(-45deg);
 }
