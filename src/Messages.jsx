@@ -5,8 +5,10 @@ class Message extends Component {
     if (this.props.type === "postNotification") {
     return (
         <div>
-          <span className="message-username">{this.props.username}</span>
-          <span className="message-content">{this.props.content}</span>
+          <div className="message-container">
+            <span className="message-username">{this.props.username}</span>
+            <span className="message-content">{this.props.content}</span>
+          </div>
         </div>
       )
     } else {

@@ -3,9 +3,19 @@
   padding: 5px;
 }
 
+.chat-container .message-container:nth-of-type(even) {
+  padding: 10px 25px 10px 25px;
+}
+
+.chat-container .message-container:nth-child(odd) {
+  padding: 10px 25px 10px 25px;
+  background-color: white;
+}
+
 .message.system {
   font-style: italic;
-  padding: 5px 20px;
+  padding: 15px;
+  justify-content: center;
 }
 
 .message-content,
