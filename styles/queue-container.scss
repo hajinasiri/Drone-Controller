@@ -17,6 +17,9 @@
   font-size: 18px;
   font-weight: bold;
   border-radius: 5px;
+  &:hover {
+    background: #006494;
+  }
 }
 
 #request-logo{

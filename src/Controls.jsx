@@ -74,7 +74,7 @@ class Controls extends Component {
             <button className="button" onMouseDown={() => this.onMouseDown("down")} onMouseUp={() => this.onMouseUp("down")}>
               <span className="label">Lower</span>
             </button>
-            <div className="center-button-flip" onMouseDown={() => this.sendcommand("backflip")}><img src="../img/back-flip.png" className="flip-icon"/> back flip </div>
+            <div className="center-button-flip" onMouseDown={() => this.sendcommand("backflip")}><img src="../img/back-flip.png" className="flip-icon"/> <span className="flip-label"> back flip </span></div>
           </div>
         </div>
       </div>
