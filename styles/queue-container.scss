@@ -1,47 +1,53 @@
 .request-control {
-  background-color: #3D3C49;
+  background-color: #EBECEE;
   color: white;
   text-transform: uppercase;
   text-align: center;
   padding: 20px;
 }
 
-.queue-container {
-  padding: 10px;
-}
-
-.queue-list {
-  overflow: scroll;
-}
-
-.users-item {
-  background: rgb(216,216,216);
-  border-left: 10px solid rgba(0,0,0,0.2);
-  padding: 10px;
-}
-
-.users-item:hover,
-.users-item.active {
-  background: rgb(180,180,180);
-}
-
-.users-name{
-  padding-right: 50px;
-  padding-left: 20px;
-}
-
 .request{
-  background: black;
+  background: #438FC4;
+  border: none;
   color: white;
   padding: 15px;
   cursor: pointer;
   text-transform: uppercase;
   width: 400px;
+  font-size: 18px;
   font-weight: bold;
+  border-radius: 5px;
 }
 
 #request-logo{
-  height: 20px;
+  height: 15px;
+}
+
+.queue-container {
+  background-color: #EBECEE;
+  padding: 20px 0 36px 35px;
+  width: 400px;
+}
+
+.queue-list {
+  overflow: scroll;
+  border-radius: 5px;
+}
+
+.users-item {
+  background: rgba(255,255,255,0.3);
+  padding: 10px;
+}
+
+// .users-item:hover,
+.users-item.active {
+  background: rgba(255,255,255,0.8);
+  border-left: 10px solid #E98036;
+}
+
+.users-name{
+  padding-right: 50px;
+  padding-left: 20px;
 }
 
 .queue-heading{
