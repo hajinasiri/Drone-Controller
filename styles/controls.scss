@@ -31,6 +31,7 @@
 
 .center-button {
   color: white;
+  cursor: pointer;
   background: #4390C1;
   padding: 20px;
   margin-bottom: 20px;
@@ -49,6 +50,7 @@
   background: #EBECEE;
   border-radius: 5px;
   border: 0;
+  cursor: pointer;
   box-sizing: border-box;
   color: #545454;
   display: block;
@@ -127,6 +129,7 @@
   font-size: 12px;
   text-transform: uppercase;
   font-weight: 700;
+  cursor: pointer;
   color: #545454;
   &:hover {
     background: white;

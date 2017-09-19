@@ -72,8 +72,8 @@ class QueueContainer extends Component {
     return (
     <div>
      <div className="request-control">
-              <button className="request" onClick={this.handleClick}>{this.props.buttontext }<img id ="request-logo" src="../img/request-icon.png" /> </button>
-            </div>
+      <button className="request" onClick={this.handleClick}>{this.props.buttontext }<img id ="request-logo" src="../img/request-icon.png" /> </button>
+      </div>
       <div className="queue-container">
         <div className="queue-heading">Current Queue</div>
         <div className="queue-list">
@@ -98,4 +98,5 @@ class QueueContainer extends Component {
     )
   }
 }
+
 export default QueueContainer;
