@@ -17,30 +17,17 @@ const wss = new SocketServer({ server });
 //sendLineInfo is a function that sends names of the people in line to every client
 //plus the position of that client that recieves the message
 function sendLineInfo(line) {
-  var lineInfo = [];
-  // line.forEach(function(element) {
-  //     lineInfo.push(element.name);
-  // });
-  lineInfo = line.map(element => element.name).concat(-1);
   wss.clients.forEach(function each(client, index) {
     if (client.readyState === wsLib.OPEN) {
-        var clientIndex = line.findIndex(arr => arr.ws === client);
+        var def = ['', ''];
+        var lineout = def.map((l, i) => {
+          return line[i] ? line[i].name : l;
+        })
+        .concat(line.slice(def.length).map(l => l.name))
+        .concat(line.findIndex(l => l.ws === client));
 
-        if (clientIndex > -1) {
-            lineInfo.splice(-1, 1); //removing the initial position value
-            lineInfo.push(clientIndex); //adding the actual position of the user to the array
-        }
-        let lineLength = lineInfo.length;
-        let linesend = [];
-        if (lineLength === 1) {
-            linesend = ["", "", -1];
-        } else if (lineLength === 2) {
-            linesend = [lineInfo[0], "", clientIndex];
-        } else {
-            linesend = lineInfo;
-        }
-        client.send(JSON.stringify({ type: "lineInfo", lineInfo: linesend }));
-        console.log("message to client",index,"is\n\n\n", linesend);
+        client.send(JSON.stringify({ type: "lineInfo", lineInfo: lineout}));
+        console.log("message to client", lineout);
     }
   });
 }
@@ -53,6 +40,7 @@ wss.broadcast = function broadcast(data) {
   });
 };
 
+var linesend =[];
 var controller = {};
 var line = [];
 var clientInfo = [];
