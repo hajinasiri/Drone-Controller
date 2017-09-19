@@ -71,7 +71,7 @@ class App extends Component {
         this.setState({count:data.count})
       }else if(data.type === "lineInfo"){
         this.setState({lineInfo: data.lineInfo});
-        console.log("lineInfo is",this.state.lineInfo);
+        console.log("lineInfo is",data.lineInfo);
         if(this.state.lineInfo.length < 4){
           this.setState({lineLength: ""});
         } else{

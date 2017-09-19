@@ -18,30 +18,30 @@ const wss = new SocketServer({ server });
 //plus the position of that client that recieves the message
 function sendLineInfo(line) {
   var lineInfo = [];
-  line.forEach(function(element) {
-      lineInfo.push(element.name);
-  });
-  lineInfo.push(-1); //initializing the user's position in the line
-  wss.clients.forEach(function each(client) {
-      if (client.readyState === wsLib.OPEN) {
-          var clientIndex = line.findIndex(arr => arr.ws === client);
+  // line.forEach(function(element) {
+  //     lineInfo.push(element.name);
+  // });
+  lineInfo = line.map(element => element.name).concat(-1);
+  wss.clients.forEach(function each(client, index) {
+    if (client.readyState === wsLib.OPEN) {
+        var clientIndex = line.findIndex(arr => arr.ws === client);
 
-          if (clientIndex > -1) {
-              lineInfo.splice(-1, 1); //removing the initial position value
-              lineInfo.push(clientIndex); //adding the actual position of the user to the array
-          }
-          let lineLength = lineInfo.length;
-          let linesend = [];
-          if (lineLength === 1) {
-              linesend = ["", "", -1];
-          } else if (lineLength === 2) {
-              linesend = [lineInfo[0], "", 0];
-          } else {
-              linesend = lineInfo;
-          }
-          client.send(JSON.stringify({ type: "lineInfo", lineInfo: linesend }));
-          console.log("message to clients is", lineInfo);
-      }
+        if (clientIndex > -1) {
+            lineInfo.splice(-1, 1); //removing the initial position value
+            lineInfo.push(clientIndex); //adding the actual position of the user to the array
+        }
+        let lineLength = lineInfo.length;
+        let linesend = [];
+        if (lineLength === 1) {
+            linesend = ["", "", -1];
+        } else if (lineLength === 2) {
+            linesend = [lineInfo[0], "", clientIndex];
+        } else {
+            linesend = lineInfo;
+        }
+        client.send(JSON.stringify({ type: "lineInfo", lineInfo: linesend }));
+        console.log("message to client",index,"is\n\n\n", linesend);
+    }
   });
 }
 
