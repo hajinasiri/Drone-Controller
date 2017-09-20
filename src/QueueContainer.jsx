@@ -16,21 +16,11 @@ class QueueContainer extends Component {
   }
 
   handleClick() {
-
-    console.log((this.props.lineInfo[this.props.lineInfo.length - 1] !== -1));
-
     if((this.props.lineInfo.length !== 0) && (this.props.lineInfo[this.props.lineInfo.length - 1] !== -1)){
       if(confirm('Cancel the request?')) {
-        this.setState(prevState => ({
-          mytext: "Request Control",
-        }));
         this.props.sendIt({type:"request",name:this.props.currentUser.name, reqstate: -1});
       }
     }else{
-      console.log("we are here")
-      this.setState(prevState => ({
-        mytext: "Cancel the Request",
-      }));
       this.props.sendIt({type:"request",name:this.props.currentUser.name, reqstate: 1});
 
     }

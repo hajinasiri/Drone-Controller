@@ -17,7 +17,7 @@ class App extends Component {
       messages: [],
       users: [],
       count:0,
-      lineInfo:[],//[your position in line, other people in line's name]
+      lineInfo:["","",-1],//[your position in line, other people in line's name]
       lineLength: "",
       buttontext:"Request Control"
     };
@@ -64,25 +64,32 @@ class App extends Component {
         var news = [{username:"" , content:(data.newname + " joined the page "), id:uuid()}];
         mymass = this.state.messages.concat(news);
         this.setState({messages: mymass});
+
       }else if(data.type === "postNotification"){
         mymass = this.state.messages.concat([data]);
         this.setState({messages: mymass});
+
       }else if(data.type === "count"){
         this.setState({count:data.count})
+
       }else if(data.type === "lineInfo"){
         this.setState({lineInfo: data.lineInfo});
-        console.log("lineInfo is",data.lineInfo);
         if(this.state.lineInfo.length < 4){
           this.setState({lineLength: ""});
-        } else{
-          this.setState({lineLength: lineInfo.length - 3 + "is in line"});
-        }
-        if(data.lineInfo[data.lineInfo.length-1] === -1){
-          this.setState({buttontext:"Request Control"});
-        }else if(data.lineInfo[data.lineInfo.length-1] === 0){
-          this.setState({buttontext:"You are in command"});
+
         }else{
-          this.setState({buttontext:"Cancel request"});
+          this.setState({lineLength: data.lineInfo.length - 3 + "more people are in line"});
+        }
+        console.log("lineInfo", data.lineInfo);
+        if(data.lineInfo[data.lineInfo.length - 1] === -1){
+          this.setState({buttontext:"Request Control"});
+
+        }else if(data.lineInfo[data.lineInfo.length - 1] === 0){
+          this.setState({buttontext:"You are in command"});
+
+        }else{
+          console.log("we are inside");
+          this.setState({buttontext:"You are number " + String(data.lineInfo[data.lineInfo.length - 1]) + " in line"});
         }
       }
     });
@@ -108,7 +115,7 @@ class App extends Component {
           <Controls sendIt={this.sendIt}/>
         </div>
         <div className="sidebar">
-          <QueueContainer buttontext={this.state.buttontext} lineLength={this.props.lineLength}currentUser={this.state.currentUser} lineInfo={this.state.lineInfo} sendIt={this.sendIt} />
+          <QueueContainer buttontext={this.state.buttontext} lineLength={this.state.lineLength} currentUser={this.state.currentUser} lineInfo={this.state.lineInfo} sendIt={this.sendIt} />
 
           <ChatContainer count={this.state.count} Messages={this.state.messages} currentUser={this.state.currentUser} updatename={this.updatename} updateme={this.updateme}/>
         </div>
