@@ -26,7 +26,7 @@
 }
 
 .inCommand{
-  background: red;
+  background: #E98036;
   border: none;
   color: white;
   padding: 15px;
@@ -37,12 +37,12 @@
   font-weight: bold;
   border-radius: 5px;
   &:hover {
-    background: red;
+    background: #E98036;
   }
 }
 
 .inLine{
-  background: yellow;
+  background: #438FC4;
   border: none;
   color: white;
   padding: 15px;
@@ -53,7 +53,10 @@
   font-weight: bold;
   border-radius: 5px;
   &:hover {
-    background: red;
+    background: #006494;
+  }
+  &:active {
+    background: #264653;
   }
 }
 
