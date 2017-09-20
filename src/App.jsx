@@ -60,12 +60,20 @@ class App extends Component {
     this.ws.addEventListener('message', (event) => {
       var temp = event.data;
       var data=JSON.parse(event.data);
-      console.log("message is",data);
+      // console.log("message is",data);
       var mymass = {};
       if(data.type === "name"){
         var news = [{username:"" , content:(data.newname + " joined the page "), id:uuid()}];
         mymass = this.state.messages.concat(news);
         this.setState({messages: mymass});
+      }else if(data.type === "time" ){
+        if(this.state.lineInfo[this.state.lineInfo.length - 1] !== 0){
+          this.setState({time:data.time});
+          if(this.state.lineInfo[this.state.lineInfo.length - 1] === -1){
+            let newlineInfo = [data.first, data.second, -1];
+            this.setState({lineInfo: newlineInfo, lineLength:data.lineLength});
+          }
+        }
 
       }else if(data.type === "postNotification"){
         mymass = this.state.messages.concat([data]);
@@ -95,6 +103,7 @@ class App extends Component {
             let interval = setInterval(() => {
                numSecondsPassed++;
               this.setState({time:30 - numSecondsPassed});
+              this.ws.send(JSON.stringify({type:"time", time: (30 - numSecondsPassed), lineLength:this.state.lineLength, first: this.state.lineInfo[0], second:this.state.lineInfo[1]}));
               if (numSecondsPassed == 30) {
                 clearInterval(interval);
                 nowInLead = false;
