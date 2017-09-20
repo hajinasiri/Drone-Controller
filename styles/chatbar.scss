@@ -1,20 +1,23 @@
 .chatbar {
   bottom: 10px;
-  position: absolute;
+  border-top: 1px solid;
+  margin-left: 35px;
+  margin-right: 60px;
+  margin-top: -10px;
+  border-bottom: 1px solid;
 }
 
 .chatbar-message,
 .chatbar-username {
-  margin: 5px;
+  margin: 10px
 }
 
 .chatbar-message {
   border: none;
-  border-bottom: 1px solid;
   text-align: left;
-  width: 60%;
   padding: 5px;
   background-color: #F7F7F7;
+  width: 60%;
 }
 
 input:focus {
@@ -23,10 +26,10 @@ input:focus {
 
 .chatbar-username {
   border: none;
-  background-color: #F7F7F7;
+  background-color: #EBECEE;
   text-transform: uppercase;
   font-weight: bold;
-  padding-left: 30px;
+  padding-left: 20px;
   width: 30%;
-  cursor: pointer;
 }
+
