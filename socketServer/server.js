@@ -52,61 +52,67 @@ var now = 0;
 setInterval(function() {
   //Next 4 lines assign the first one in the line as the commander
   if (!commander.readyState && line.length > 0) {
-      commander = line[0].ws;
-      start = new Date().getTime();
+    commander = line[0].ws;
+    start = new Date().getTime();
+    wss.broadcast(JSON.stringify({ type: "commander changed"}));
   }
   //Next 11 lines  remove the current commander from the line and empty the commander
   let timeDifference = new Date().getTime() - start;
   if ((timeDifference > (30 * 1000)) && (timeDifference < (31 * 1000))) {
-      console.log("time passed")
-      oldLineLength = line.length;
-      line.shift();
-      commander = {};
-      // to check if the line changed (line was not empty before)
-      if (oldLineLength !== line.length) {
-          console.log("new line is sent to clients");
-          sendLineInfo(line);
-      }
+    console.log("time passed")
+    oldLineLength = line.length;
+    line.shift();
+    commander = {};
+    // to check if the line changed (line was not empty before)
+    if (oldLineLength !== line.length) {
+        console.log("new line is sent to clients");
+        sendLineInfo(line);
+    }
   }
 }, 500);
 
 
 wss.on('connection', (ws) => {
-
   wss.broadcast(JSON.stringify({ type: "count", count: wss.clients.size - 1 }));
   ws.on('message', (str) => {
-      // console.log(theData.content);
-      var theData = JSON.parse(str);
+    // console.log(theData.content);
+    var theData = JSON.parse(str);
 
-      var messType = theData.type;
+    var messType = theData.type;
 
-      if (messType === "controller") {
-          controller = ws;
-          controller.send(JSON.stringify({ content: "I am recognized as the controller" }));
-          // putting the controller client in the controller variable
-      } else if (messType === "postNotification" || messType === "name") {
-          wss.broadcast(str);
-      } else if (messType === "command" && commander === ws) {
-          controller.send(str)
-      } else if (messType === "request") {
-          if (theData.reqstate === 1) { //if it is controll request
-              line.push({ ws: ws, name: theData.name });
-          } else if (theData.reqstate === -1) { //if it is cancel request removes the client from line
-              lineIndex = line.findIndex(arr => arr.ws === ws);
-              line.splice(lineIndex, 1);
-          }
-          sendLineInfo(line);
-      }
+    if (messType === "controller") {
+        controller = ws;
+        controller.send(JSON.stringify({ content: "I am recognized as the controller" }));
+        // putting the controller client in the controller variable
+    }else if(messType === "time"){
+      wss.broadcast(str);
+      // console.log(theData.time)
+    } else if (messType === "postNotification" || messType === "name") {
+        wss.broadcast(str);
+    } else if (messType === "command" && commander === ws) {
+        controller.send(str)
+    } else if (messType === "request") {
+        if (theData.reqstate === 1) { //if it is controll request
+            line.push({ ws: ws, name: theData.name });
+        } else if (theData.reqstate === -1) { //if it is cancel request removes the client from line
+            lineIndex = line.findIndex(arr => arr.ws === ws);
+            line.splice(lineIndex, 1);
+            if(commander === ws){
+              commander ={};
+            }
+        }
+        sendLineInfo(line);
+    }
   });
 
   ws.on('close', () => {
     // removing the client from line when their connection is closed
     lineIndex = line.findIndex(arr => arr.ws === ws);
     if (lineIndex > -1) {
-        line.splice(lineIndex, 1);
-        if (commander === ws) {
-            commander = {};
-        }
+      line.splice(lineIndex, 1);
+      if (commander === ws) {
+          commander = {};
+      }
     }
     sendLineInfo(line);
     wss.broadcast(JSON.stringify({ type: "count", count: wss.clients.size }));
