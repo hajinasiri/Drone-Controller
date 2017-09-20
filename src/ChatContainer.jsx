@@ -17,8 +17,6 @@ class ChatContainer extends Component {
         <div className="chat-container">
           <NavBar count={this.props.count}/>
           <MessageList Messages={this.props.Messages}/>
-
-
         </div>
       <ChatBar currentUser={this.props.currentUser} updatename={this.props.updatename} updateme={this.props.updateme} />
       </div>

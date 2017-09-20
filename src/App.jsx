@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import ReactDom from 'react-dom';
-// import Popup from 'react-popup';
 import uuid from 'uuid/v1';
 import ChatContainer from './ChatContainer.jsx';
 import Header from './Header.jsx';
@@ -17,7 +16,7 @@ class App extends Component {
       messages: [],
       users: [],
       count:0,
-      lineInfo:["","",-1],//[users position in line, other people in line's name]
+      lineInfo:["","",-1],//[first user in line's name, second user in line's name, position of the current user in line]
       lineLength: "",
       buttontext:"Request Control",
       time: 0,
@@ -31,12 +30,12 @@ class App extends Component {
   sendIt(obj) {
     this.ws.send(JSON.stringify(obj));
   }
-
+//this function updates the chat list
   updateme (text,id,username) {
     var new_obj = [{username: username, content:text, id:uuid(), type: "postNotification"}];
     this.ws.send(JSON.stringify(new_obj[0]));
   }
-
+//this function updates the name of the current user
   updatename (newname) {
     if(newname){
       var obj = {newname:newname, oldname: " ", type:"name"};
@@ -82,17 +81,17 @@ class App extends Component {
 
         }else{
           this.setState({lineLength: data.lineInfo.length - 3 + "more in line"});
+
         }
-        console.log("lineInfo", data.lineInfo);
         if(data.lineInfo[data.lineInfo.length - 1] === -1){
           this.setState({buttontext:"Request Control", class: "request"});
-
-        }else if(data.lineInfo[data.lineInfo.length - 1] === 0 && !nowInLead){
-          nowInLead = true;
+          console.log(this.state.buttontext);
+        }else if(data.lineInfo[data.lineInfo.length - 1] === 0){
           this.setState({buttontext:"You are in command", class:"inCommand"});
-          let t = new Date().getTime();
-          let numSecondsPassed = 0;
-          // if(this.state.time === 0){
+          if(!nowInLead){
+            nowInLead = true;
+            let t = new Date().getTime();
+            let numSecondsPassed = 0;
             let interval = setInterval(() => {
                numSecondsPassed++;
               this.setState({time:30 - numSecondsPassed});
@@ -101,10 +100,10 @@ class App extends Component {
                 nowInLead = false;
                 this.setState({time:0});
               }
-              // this.setState({time : (new Date().getTime() -t)});
             },1000);
-          // }
+          }
         }else{
+          console.log(this.state.buttontext);
           this.setState({buttontext:"You are number " + String(data.lineInfo[data.lineInfo.length - 1]) + " in line", class: "inLine"});
         }
       }

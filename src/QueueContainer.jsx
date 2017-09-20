@@ -6,10 +6,8 @@ class QueueContainer extends Component {
     this.state = {
       reqstate: -1,
       mytext: "Request Control",
-      uname: this.props.currentUser.name,
-      seconds: 60 };
+      uname: this.props.currentUser.name};
     this.timer = 0;
-    this.startTimer = this.startTimer.bind(this);
     this.countDown = this.countDown.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
@@ -25,24 +23,9 @@ class QueueContainer extends Component {
     }
   }
 
-  secondsToTime(secs){
-    let seconds = secs;
-    let obj = {
-      "s": seconds
-    };
-    return obj;
-  }
-
   componentDidMount() {
-    let timeLeftVar = this.secondsToTime(this.state.seconds);
-    this.setState({ time: timeLeftVar});
   }
 
-  startTimer() {
-    if (this.timer == 0) {
-      this.timer = setInterval(this.countDown, 1000);
-    }
-  }
 
   countDown() {
     let seconds = this.state.seconds - 1;
@@ -54,8 +37,6 @@ class QueueContainer extends Component {
       clearInterval(this.timer);
     }
   }
-
-// const Child = ({onClick, text}) => (<button onClick={onClick}>{text}</button>)
 
   render() {
     return (
