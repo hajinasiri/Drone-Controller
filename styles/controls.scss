@@ -39,6 +39,9 @@
   &:hover {
     background-color: #006494;
   }
+  &:active {
+    background: #264653;
+  }
 }
 
 .rotated-buttons {
@@ -106,8 +109,11 @@
 }
 
 .button:hover {
-  background: grey;
+  background: lightgrey;
   color: white;
+  &:active {
+    background: grey;
+  }
 }
 
 .button-container {
@@ -133,6 +139,9 @@
   color: #545454;
   &:hover {
     background: white;
+  }
+  &:active {
+    background: #D8D8D8;
   }
 }
 
