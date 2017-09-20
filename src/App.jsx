@@ -89,7 +89,7 @@ class App extends Component {
 
         }else{
           console.log("we are inside");
-          this.setState({buttontext:"Cancel Request"});
+          this.setState({buttontext:"You are number " + String(data.lineInfo[data.lineInfo.length - 1]) + " in line"});
         }
       }
     });
