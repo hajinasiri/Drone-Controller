@@ -22,6 +22,38 @@
   }
 }
 
+.inCommand{
+  background: red;
+  border: none;
+  color: white;
+  padding: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  width: 400px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  &:hover {
+    background: red;
+  }
+}
+
+.inLine{
+  background: yellow;
+  border: none;
+  color: white;
+  padding: 15px;
+  cursor: pointer;
+  text-transform: uppercase;
+  width: 400px;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 5px;
+  &:hover {
+    background: red;
+  }
+}
+
 #request-logo{
   height: 15px;
 }

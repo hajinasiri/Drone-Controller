@@ -56,7 +56,8 @@ setInterval(function() {
       start = new Date().getTime();
   }
   //Next 11 lines  remove the current commander from the line and empty the commander
-  if ((new Date().getTime() - start) > 10 * 1000 && (new Date().getTime() - start) < 11 * 1000) {
+  let timeDifference = new Date().getTime() - start;
+  if ((timeDifference > (30 * 1000)) && (timeDifference < (31 * 1000))) {
       console.log("time passed")
       oldLineLength = line.length;
       line.shift();

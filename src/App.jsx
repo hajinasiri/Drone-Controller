@@ -17,9 +17,11 @@ class App extends Component {
       messages: [],
       users: [],
       count:0,
-      lineInfo:["","",-1],//[your position in line, other people in line's name]
+      lineInfo:["","",-1],//[users position in line, other people in line's name]
       lineLength: "",
-      buttontext:"Request Control"
+      buttontext:"Request Control",
+      time: 0,
+      class: "request"
     };
     this.updateme = this.updateme.bind(this);
     this.updatename = this.updatename.bind(this);
@@ -51,6 +53,7 @@ class App extends Component {
   }
 
   componentDidMount() {
+    let nowInLead = false;
     this.ws = new WebSocket('ws://' + location.hostname + ':3001');
     this.ws.addEventListener('open', () => {
 
@@ -78,18 +81,31 @@ class App extends Component {
           this.setState({lineLength: ""});
 
         }else{
-          this.setState({lineLength: data.lineInfo.length - 3 + "more people are in line"});
+          this.setState({lineLength: data.lineInfo.length - 3 + "more in line"});
         }
         console.log("lineInfo", data.lineInfo);
         if(data.lineInfo[data.lineInfo.length - 1] === -1){
-          this.setState({buttontext:"Request Control"});
+          this.setState({buttontext:"Request Control", class: "request"});
 
-        }else if(data.lineInfo[data.lineInfo.length - 1] === 0){
-          this.setState({buttontext:"You are in command"});
-
+        }else if(data.lineInfo[data.lineInfo.length - 1] === 0 && !nowInLead){
+          nowInLead = true;
+          this.setState({buttontext:"You are in command", class:"inCommand"});
+          let t = new Date().getTime();
+          let numSecondsPassed = 0;
+          // if(this.state.time === 0){
+            let interval = setInterval(() => {
+               numSecondsPassed++;
+              this.setState({time:30 - numSecondsPassed});
+              if (numSecondsPassed == 30) {
+                clearInterval(interval);
+                nowInLead = false;
+                this.setState({time:0});
+              }
+              // this.setState({time : (new Date().getTime() -t)});
+            },1000);
+          // }
         }else{
-          console.log("we are inside");
-          this.setState({buttontext:"You are number " + String(data.lineInfo[data.lineInfo.length - 1]) + " in line"});
+          this.setState({buttontext:"You are number " + String(data.lineInfo[data.lineInfo.length - 1]) + " in line", class: "inLine"});
         }
       }
     });
@@ -115,7 +131,7 @@ class App extends Component {
           <Controls sendIt={this.sendIt}/>
         </div>
         <div className="sidebar">
-          <QueueContainer buttontext={this.state.buttontext} lineLength={this.state.lineLength} currentUser={this.state.currentUser} lineInfo={this.state.lineInfo} sendIt={this.sendIt} />
+          <QueueContainer class={this.state.class} time={this.state.time} buttontext={this.state.buttontext} lineLength={this.state.lineLength} currentUser={this.state.currentUser} lineInfo={this.state.lineInfo} sendIt={this.sendIt} />
 
           <ChatContainer count={this.state.count} Messages={this.state.messages} currentUser={this.state.currentUser} updatename={this.updatename} updateme={this.updateme}/>
         </div>
