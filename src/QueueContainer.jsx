@@ -7,7 +7,6 @@ class QueueContainer extends Component {
       reqstate: -1,
       mytext: "Request Control",
       uname: this.props.currentUser.name,
-      time: {},
       seconds: 60 };
     this.timer = 0;
     this.startTimer = this.startTimer.bind(this);
@@ -62,7 +61,7 @@ class QueueContainer extends Component {
     return (
     <div>
      <div className="request-control">
-      <button className="request" onClick={this.handleClick}>{this.props.buttontext }<img id ="request-logo" src="../img/request-icon.png" /> </button>
+      <button className={this.props.class} onClick={this.handleClick}>{this.props.buttontext }<img id ="request-logo" src="../img/request-icon.png" /> </button>
       </div>
       <div className="queue-container">
         <div className="queue-heading">Current Queue</div>
@@ -70,8 +69,7 @@ class QueueContainer extends Component {
           <div className="users-item active">
             <div className="queue-current">
               <span className="users-name">{this.props.lineInfo[0]}</span>
-              <button className="button-click" onClick={this.startTimer}>Start</button>
-              <span> {this.state.time.s} seconds remaining</span>
+              <span> {this.props.time} seconds remaining</span>
             </div>
           </div>
 
