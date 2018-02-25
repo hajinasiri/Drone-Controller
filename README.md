@@ -1,6 +1,6 @@
 # "Simdrone" - Group Final Project (Lighthouse Labs)
 
-Group Members: Esha, Shahab, Hannah
+Group Members: Esha, Sh, Hannah
 
 This is the final project for ligthouse labs web developing deploma.
 The app is deployed on AWS and can be found on
